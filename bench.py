@@ -139,10 +139,10 @@ def main():
         # run all policies × all clusters × standard load trace
         for policy_name in POLICIES:
             for cluster_name in CLUSTER_PRESETS:
-                r = run_bench(policy_name, cluster_name, "load", verbose=True)
+                r = run_bench(policy_name, cluster_name, "load", verbose=args.verbose)
                 results.append(r)
     else:
-        r = run_bench(args.policy, args.cluster, args.trace, verbose=True)
+        r = run_bench(args.policy, args.cluster, args.trace, verbose=args.verbose)
         results.append(r)
 
     print_leaderboard(results)

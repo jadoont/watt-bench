@@ -1,0 +1,93 @@
+name: Benchmark
+
+on:
+  pull_request:
+    paths:
+      - 'policies/**'
+      - 'hardware_profiles.json'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run benchmark
+        run: python3 bench.py --all > bench_output.txt 2>&1
+
+      - name: Extract leaderboard table
+        if: always()
+        run: grep '^|' bench_output.txt > leaderboard.txt || true
+
+      - name: Post leaderboard as PR comment
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            let table = '_Benchmark produced no output — the run may have crashed. Check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})._';
+            try {
+              const raw = fs.readFileSync('leaderboard.txt', 'utf8').trim();
+              if (raw) table = raw;
+            } catch (_) {}
+
+            const sha = context.payload.pull_request.head.sha.slice(0, 7);
+            const runUrl = `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
+            const marker = '<!-- watt-bench-leaderboard -->';
+
+            const body = [
+              marker,
+              '## watt-bench leaderboard',
+              '',
+              table,
+              '',
+              `<sub>Commit ${sha} · [workflow run](${runUrl})</sub>`,
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c => c.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Fail if any policy completed 0 jobs
+        run: |
+          python3 - <<'EOF'
+          import json, sys
+          with open('results/latest.json') as f:
+              data = json.load(f)
+          failed = [r for r in data if r['completed'] == 0]
+          if failed:
+              for r in failed:
+                  print(f"FAIL: {r['policy']} on {r['cluster']}/{r['trace']} completed 0 jobs")
+              sys.exit(1)
+          print(f"OK: all {len(data)} policy runs completed jobs")
+          EOF
