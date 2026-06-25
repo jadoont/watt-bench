@@ -1,0 +1,91 @@
+{
+  "_sources": {
+    "H100_SXM5": "Spheron blog Apr 2026, vLLM benchmarks; batch=32 ~1900 tok/s at ~650W",
+    "A100_SXM4": "MLPerf Inference v5.1 submissions, vLLM docs",
+    "A10G": "AWS inferentia benchmarks, Anyscale inference benchmarks 2025",
+    "notes": "Power figures are measured at sustained load. Throttle kicks in at threshold_w sustained for >30s."
+  },
+  "H100_SXM5": {
+    "vram_gb": 80,
+    "tdp_w": 700,
+    "idle_w": 80,
+    "throttle_threshold_w": 680,
+    "throttle_factor": 0.65,
+    "models": {
+      "llama3_70b_fp8": {
+        "vram_required_gb": 42,
+        "batch_1":  {"tok_s": 70,   "power_w": 280},
+        "batch_8":  {"tok_s": 420,  "power_w": 430},
+        "batch_32": {"tok_s": 1900, "power_w": 650},
+        "batch_64": {"tok_s": 2100, "power_w": 690}
+      },
+      "llama3_8b_fp8": {
+        "vram_required_gb": 10,
+        "batch_1":  {"tok_s": 280,  "power_w": 180},
+        "batch_8":  {"tok_s": 1800, "power_w": 320},
+        "batch_32": {"tok_s": 4200, "power_w": 480},
+        "batch_64": {"tok_s": 4800, "power_w": 560}
+      },
+      "mistral_7b_fp16": {
+        "vram_required_gb": 15,
+        "batch_1":  {"tok_s": 220,  "power_w": 200},
+        "batch_8":  {"tok_s": 1400, "power_w": 350},
+        "batch_32": {"tok_s": 3600, "power_w": 510},
+        "batch_64": {"tok_s": 4100, "power_w": 580}
+      }
+    }
+  },
+  "A100_SXM4": {
+    "vram_gb": 80,
+    "tdp_w": 400,
+    "idle_w": 50,
+    "throttle_threshold_w": 390,
+    "throttle_factor": 0.65,
+    "models": {
+      "llama3_70b_fp8": {
+        "vram_required_gb": 42,
+        "batch_1":  {"tok_s": 35,   "power_w": 160},
+        "batch_8":  {"tok_s": 210,  "power_w": 260},
+        "batch_32": {"tok_s": 920,  "power_w": 370},
+        "batch_64": {"tok_s": 1050, "power_w": 395}
+      },
+      "llama3_8b_fp8": {
+        "vram_required_gb": 10,
+        "batch_1":  {"tok_s": 140,  "power_w": 100},
+        "batch_8":  {"tok_s": 850,  "power_w": 190},
+        "batch_32": {"tok_s": 2100, "power_w": 290},
+        "batch_64": {"tok_s": 2400, "power_w": 340}
+      },
+      "mistral_7b_fp16": {
+        "vram_required_gb": 15,
+        "batch_1":  {"tok_s": 110,  "power_w": 120},
+        "batch_8":  {"tok_s": 680,  "power_w": 210},
+        "batch_32": {"tok_s": 1750, "power_w": 310},
+        "batch_64": {"tok_s": 2000, "power_w": 360}
+      }
+    }
+  },
+  "A10G": {
+    "vram_gb": 24,
+    "tdp_w": 150,
+    "idle_w": 25,
+    "throttle_threshold_w": 145,
+    "throttle_factor": 0.70,
+    "models": {
+      "llama3_8b_fp8": {
+        "vram_required_gb": 10,
+        "batch_1":  {"tok_s": 55,  "power_w": 60},
+        "batch_8":  {"tok_s": 320, "power_w": 100},
+        "batch_32": {"tok_s": 780, "power_w": 138},
+        "batch_64": {"tok_s": 820, "power_w": 148}
+      },
+      "mistral_7b_fp16": {
+        "vram_required_gb": 15,
+        "batch_1":  {"tok_s": 40,  "power_w": 70},
+        "batch_8":  {"tok_s": 240, "power_w": 110},
+        "batch_32": {"tok_s": 590, "power_w": 142},
+        "batch_64": {"tok_s": 610, "power_w": 148}
+      }
+    }
+  }
+}

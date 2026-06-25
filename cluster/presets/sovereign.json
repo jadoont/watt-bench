@@ -1,0 +1,29 @@
+{
+  "name": "sovereign",
+  "description": "8x A100 air-gapped/edge — 2kW/rack hard cap, models forward-deployed or sovereign inference clusters",
+  "notes": "Power budget is 3x tighter than standard DC density. Every placement decision is a tradeoff. Models Palantir-style forward-deployed or air-gapped sovereign deployments.",
+  "racks": [
+    {
+      "id": "rack-0",
+      "power_budget_w": 2000,
+      "cooling_dissipation_w": 1800,
+      "gpus": [
+        {"id": "gpu-0", "type": "A100_SXM4"},
+        {"id": "gpu-1", "type": "A100_SXM4"},
+        {"id": "gpu-2", "type": "A100_SXM4"},
+        {"id": "gpu-3", "type": "A100_SXM4"}
+      ]
+    },
+    {
+      "id": "rack-1",
+      "power_budget_w": 2000,
+      "cooling_dissipation_w": 1800,
+      "gpus": [
+        {"id": "gpu-4", "type": "A100_SXM4"},
+        {"id": "gpu-5", "type": "A100_SXM4"},
+        {"id": "gpu-6", "type": "A100_SXM4"},
+        {"id": "gpu-7", "type": "A100_SXM4"}
+      ]
+    }
+  ]
+}

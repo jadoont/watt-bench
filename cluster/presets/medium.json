@@ -1,0 +1,163 @@
+{
+  "name": "medium",
+  "description": "32x mixed H100/A100 across 4 racks \u2014 heterogeneous cluster, tight power budgets per rack",
+  "notes": "Rack budgets set to realistic 2026 colocation facility constraints (~4.5kW/GPU average). H100 racks run near capacity at full batch load, triggering thermal throttle under burst.",
+  "racks": [
+    {
+      "id": "rack-0",
+      "power_budget_w": 5500,
+      "cooling_dissipation_w": 1500,
+      "gpus": [
+        {
+          "id": "gpu-0",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-1",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-2",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-3",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-4",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-5",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-6",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-7",
+          "type": "H100_SXM5"
+        }
+      ]
+    },
+    {
+      "id": "rack-1",
+      "power_budget_w": 5500,
+      "cooling_dissipation_w": 1500,
+      "gpus": [
+        {
+          "id": "gpu-8",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-9",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-10",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-11",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-12",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-13",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-14",
+          "type": "H100_SXM5"
+        },
+        {
+          "id": "gpu-15",
+          "type": "H100_SXM5"
+        }
+      ]
+    },
+    {
+      "id": "rack-2",
+      "power_budget_w": 3500,
+      "cooling_dissipation_w": 3200,
+      "gpus": [
+        {
+          "id": "gpu-16",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-17",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-18",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-19",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-20",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-21",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-22",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-23",
+          "type": "A100_SXM4"
+        }
+      ]
+    },
+    {
+      "id": "rack-3",
+      "power_budget_w": 3500,
+      "cooling_dissipation_w": 3200,
+      "gpus": [
+        {
+          "id": "gpu-24",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-25",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-26",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-27",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-28",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-29",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-30",
+          "type": "A100_SXM4"
+        },
+        {
+          "id": "gpu-31",
+          "type": "A100_SXM4"
+        }
+      ]
+    }
+  ]
+}

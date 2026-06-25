@@ -1,0 +1,2 @@
+# watt-bench has zero external dependencies — stdlib only.
+# Python >= 3.11 required (dataclasses, heapq, statistics, json, pathlib, importlib).

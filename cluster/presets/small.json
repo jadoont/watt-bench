@@ -1,0 +1,17 @@
+{
+  "name": "small",
+  "description": "4x H100 single rack — entry point for local simulation",
+  "racks": [
+    {
+      "id": "rack-0",
+      "power_budget_w": 10000,
+      "cooling_dissipation_w": 9500,
+      "gpus": [
+        {"id": "gpu-0", "type": "H100_SXM5"},
+        {"id": "gpu-1", "type": "H100_SXM5"},
+        {"id": "gpu-2", "type": "H100_SXM5"},
+        {"id": "gpu-3", "type": "H100_SXM5"}
+      ]
+    }
+  ]
+}
