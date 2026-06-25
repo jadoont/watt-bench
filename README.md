@@ -183,4 +183,3 @@ If you use watt-bench in research:
 
 ---
 
-*Built in Toronto, June 2026.*
