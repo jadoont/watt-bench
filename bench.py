@@ -26,6 +26,7 @@ from cluster.cluster import Cluster
 from simulator.engine import Simulator
 from simulator.metrics import BenchResult
 import traces.synthetic as synthetic_traces
+from traces.azure import azure_profile
 
 CLUSTER_PRESETS = {
     "small":    "cluster/presets/small.json",
@@ -37,6 +38,7 @@ TRACE_PROFILES = {
     "load":     synthetic_traces.load_profile,
     "stress":   synthetic_traces.stress_profile,
     "sovereign":synthetic_traces.sovereign_profile,
+    "azure":    azure_profile,
 }
 
 POLICIES = {

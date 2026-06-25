@@ -108,6 +108,28 @@ watt-bench/
 
 ---
 
+## Real traces
+
+**Azure LLM Inference Dataset 2023** (`--trace azure`)
+
+watt-bench can run against Microsoft's published production trace. On first use, `bench.py` downloads and caches the CSV automatically:
+
+```bash
+python bench.py --trace azure --cluster medium
+python bench.py --policy greedy_power --trace azure
+```
+
+The dataset has no model field; watt-bench maps requests to `llama3_8b_fp8` (short prompt + output) or `llama3_70b_fp8` (longer context) to approximate a real mixed-model fleet. Falls back to synthetic `load_profile` if the network is unavailable.
+
+**Citation:**
+
+> Patel, P., Choukse, E., Zhang, C., Shah, A., Goiri, Í., Maleki, S., & Bianchini, R. (2024).  
+> *Characterizing Power Management Opportunities for LLMs in the Cloud.*  
+> ACM ASPLOS 2024.  
+> Dataset: [github.com/Azure/AzurePublicDataset](https://github.com/Azure/AzurePublicDataset/blob/master/AzureLLMInferenceDataset2023.md)
+
+---
+
 ## Writing your own policy
 
 ```python

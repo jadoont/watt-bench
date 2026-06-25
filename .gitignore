@@ -18,6 +18,9 @@ venv/
 # Project outputs
 results/latest.json
 
+# Downloaded trace cache
+traces/.azure_cache.csv
+
 # IDE
 .idea/
 .vscode/
