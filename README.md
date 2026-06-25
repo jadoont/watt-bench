@@ -16,9 +16,8 @@ vLLM, SGLang, and TensorRT-LLM are excellent inference engines. [TAPAS (Microsof
 - A **runnable, open-source benchmark** you can execute locally against public traces
 - **Power as a hard constraint**, not a soft penalty
 - A **policy-pluggable harness** where you can submit your own scheduler and see where it ranks
-- A **sovereign/edge preset** modeling air-gapped or forward-deployed inference (Palantir-style, defense AI)
+- A **sovereign/edge preset** modeling air-gapped or forward-deployed inference.
 
-watt-bench is that missing piece.
 
 ---
 
@@ -93,7 +92,7 @@ watt-bench/
 
 **`medium`** — 32x mixed H100/A100 across 4 racks with tight cooling limits. The interesting heterogeneous case: policy must decide whether to pack onto fast H100 racks (throttle risk) or spread across slower A100 racks (power headroom).
 
-**`sovereign`** — 8x A100, 2kW/rack hard cap. Models forward-deployed or air-gapped inference clusters. Every placement decision is a tradeoff. Inspired by Palantir-style operational deployments and sovereign AI infrastructure requirements.
+**`sovereign`** — 8x A100, 2kW/rack hard cap. Models forward-deployed or air-gapped inference clusters. Every placement decision is a tradeoff. Inspired by sovereign AI infrastructure requirements.
 
 ---
 
@@ -164,7 +163,6 @@ watt-bench is an open-source benchmarking harness, not a production scheduler. F
 - **vLLM** — continuous batching, PagedAttention, production inference engine
 - **SGLang** — RadixAttention, high-throughput serving
 
-The gap watt-bench fills: none of the above are runnable open-source benchmarks with power as a first-class, hard constraint and a community leaderboard.
 
 ---
 
